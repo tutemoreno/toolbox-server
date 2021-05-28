@@ -8,9 +8,11 @@ export async function postMessage(req, res) {
       error: 'no text',
     });
 
+  const isPalidrome = checkPalindrome(text);
+
   const message = new Message({
-    text: reverseString(text),
-    isPalidrome: checkPalindrome(text),
+    text: isPalidrome ? text : reverseString(text),
+    isPalidrome,
   });
 
   const messageSaved = await message.save();

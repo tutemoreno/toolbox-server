@@ -5,18 +5,12 @@ import Router from './routes/index.js';
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+app.use(express.json());
 
 //routes
 app.use(Router);
 
 app.listen(4000);
 console.log('Server on port', 4000);
+
+export default app;
